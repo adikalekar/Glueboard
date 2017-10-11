@@ -1,0 +1,15 @@
+.pricing-head h3 {
+    color: #fafafa;
+    padding: 12px 0;
+    font-size: 35px;
+    font-family: Arial;
+    background: #74C52C;
+    border-radius: 3px 3px 0 0;
+    text-shadow: 0 1px 0 #32a20f;
+}
+
+.pricing h3, .pricing h4 {
+    margin: 0;
+    line-height: normal;
+    font-weight: bold;
+}

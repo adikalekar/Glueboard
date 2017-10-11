@@ -1,0 +1,43 @@
+<?php
+
+// Include confi.php
+include('connect.php');
+$json = file_get_contents('php://input');
+$obj = json_decode($json);
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+	
+    $BullyId = $obj->{'BullyId'};
+	$Message = $obj->{'Message'};
+	$SentOn = 'Now()';
+	$SentBy = $obj->{'SentBy'};
+	$Role = "Student";
+   
+    $getresult = mysqli_query($connection,"SELECT * FROM bully WHERE bullyid='$BullyId'");
+    $count = mysqli_num_rows($getresult);
+   
+if ($count>0){
+    
+    $data="INSERT INTO `conversationhistory` (`BullyId`, `Message`, `SentOn`, `SentBy`, `Role`) VALUES ('$BullyId', '$Message', '$SentOn', '$SentBy', '$Role');";
+   $sql = "INSERT INTO `conversationhistory` (`BullyId`, `Message`, `SentOn`, `SentBy`, `Role`) VALUES ('$BullyId', '$Message', UTC_TIMESTAMP(), '$SentBy', '$Role');";
+    
+	$qur = mysqli_query($connection,$sql);
+	if($qur){
+		$json = array("status" => 1, "msg" => "Message has been added successfully!");
+	}else{
+		$json = array("status" => 0, "msg" =>  'Something went wrong.');
+	}
+}
+    else
+    {
+       $json = array("status" => 0, "msg" => "Bully id not found"); 
+    }
+}else{
+	$json = array("status" => 0, "msg" => "Request method not accepted");
+}
+
+@mysqli_close($connection);
+
+/* Output header */
+	header('Content-type: application/json');
+	echo json_encode($json);

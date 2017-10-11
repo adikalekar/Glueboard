@@ -1,0 +1,283 @@
+/*ul{
+	text-align:center;
+}
+li {
+	list-style-type: none;
+    display: inline;
+	
+}
+a {
+	font-weight:bold;
+	color:#ffffff;
+	padding:5px;
+	text-decoration: none;
+    background-color: #69D2E7;
+}
+a:hover {
+    background-color: #A7DBD8;
+}
+ Styles the active link 
+.active{
+	background-color:#F38630;
+}
+section{
+	width:975px;
+	margin-left: auto;
+    margin-right: auto;
+}
+footer{
+	text-align:center;
+}*/
+
+ul{
+	text-align:center;
+}
+li {
+	list-style-type: none;
+    display: inline;
+	
+}
+.navbar-default {
+    font-weight:600;
+    font-family: CALIBRI;
+    background-color: white;
+    border-color: white;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #6EAC45;
+    font-size: 20px;
+    padding-top: 30px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #6EAC45/*00305B*/;
+    font-size: 22px;
+}
+.navbar-brand {
+    float: left;
+    height: 70px;
+    padding: 20px 30px;
+    font-size: 40px;
+}
+
+.link{
+	float: right;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+	color: #428bca
+}
+
+.modal-header {
+    color: #6EAC45;
+    /*background: black;*/  
+    border-radius: 6px;
+}
+.panel-default>.panel-heading {
+    color: black;/*
+    background-color: #9d9a9a;
+    border-color: #ddd;*/
+}
+.panel-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+.black {
+    color: #6EAC45;
+}
+
+.required-field {
+    color: red;
+}
+
+.btn-primary {
+    background-color: #6EAC45;
+    border-color: #6EAC45;
+}
+.btn-primary:hover {
+    background-color: #6EAC45;
+    border-color: #6EAC45;
+}
+.modal-dialog{
+    position: relative;
+    display: table; /* <-- This makes the trick */
+    overflow-y: auto;    
+    overflow-x: auto;
+    min-width: 300px;   
+}
+
+.chat_box{
+	position:fixed;
+	right:20px;
+	bottom:0px;
+	width:250px;
+}
+.chat_body{
+	background:white;
+	height:400px;
+	padding:5px 0px;
+}
+
+.chat_head,.msg_head{
+	background:#f39c12;
+	color:white;
+	padding:15px;
+	font-weight:bold;
+	cursor:pointer;
+	border-radius:5px 5px 0px 0px;
+}
+
+.msg_box{
+	position:fixed;
+    right:20px;
+	bottom:-5px;
+	width:700px;
+	background:white;
+	border-radius:5px 5px 0px 0px;
+}
+
+.msg_head{
+	background:#6EAC45;
+}
+
+.msg_body{
+	background:white;
+	height:300px;
+	font-size:12px;
+	padding:15px;
+	overflow:auto;
+	overflow-x: hidden;
+}
+.msg_input{
+	width:100%;
+	border: 1px solid white;
+	border-top:1px solid #DDDDDD;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;  
+}
+
+.close{
+	float:right;
+	cursor:pointer;
+}
+.minimize{
+	float:right;
+	cursor:pointer;
+	padding-right:5px;
+	
+}
+
+.user{
+	position:relative;
+	padding:10px 30px;
+}
+.user:hover{
+	background:#f8f8f8;
+	cursor:pointer;
+
+}
+.user:before{
+	content:'';
+	position:absolute;
+	background:#2ecc71;
+	height:10px;
+	width:10px;
+	left:10px;
+	top:15px;
+	border-radius:6px;
+}
+
+.msg_a{
+	position:relative;
+	background:#FDE4CE;
+	padding:10px;
+	min-height:10px;
+	margin-bottom:5px;
+	margin-right:10px;
+	border-radius:5px;
+}
+/*
+.msg_a:before{
+	content:"";
+	position:absolute;
+	width:0px;
+	height:0px;
+	border: 10px solid;
+	border-color: transparent #FDE4CE transparent transparent;
+	left:-20px;
+	top:7px;
+}
+*/
+
+
+.msg_b{
+	background:#EEF2E7;
+	padding:10px;
+	min-height:15px;
+	margin-bottom:5px;
+	position:relative;
+	margin-left:10px;
+	border-radius:5px;
+	word-wrap: break-word;
+}
+
+.msg_header{
+    font-weight: bold;
+    font-size: 15px;
+}
+/*.msg_b:after{
+	content:"";
+	position:absolute;
+	width:0px;
+	height:0px;
+	border: 10px solid;
+	border-color: transparent transparent transparent #EEF2E7;
+	right:-20px;
+	top:7px;
+}*/
+.msg_time{
+    font-size: x-small;
+}
+.msg_student {
+    background:#EEF2E7;
+	padding:10px;
+	min-height:10px;
+	margin-bottom:5px;
+	position:relative;
+	border-radius:5px;
+	word-wrap: break-word;
+}
+
+.msg_counsellor {
+    position:relative;
+	background:#E3FDBB;
+	padding:10px;
+	min-height:10px;
+	margin-bottom:5px;
+	border-radius:5px;
+    word-wrap: break-word;
+}
+
+.msg_schoolAdmin {
+    position:relative;
+	background:#FDE4CE;
+	padding:10px;
+	min-height:10px;
+	margin-bottom:5px;
+	border-radius:5px;
+    word-wrap: break-word;
+}
+
+/* basic positioning */
+.legend { list-style: none; }
+.legend li { float: left; margin-right: 10px; }
+.legend span { border: 1px solid #ccc; float: left; width: 15px; height: 15px; margin: 2px; }
+/* your colors */
+.legend .student { background-color: #EEF2E7; }
+.legend .counsellor { background-color: #E3FDBB; }
+.legend .schoolAdmin { background-color: #FDE4CE; }
+
+#sortable{
+      text-align: left;  
+}

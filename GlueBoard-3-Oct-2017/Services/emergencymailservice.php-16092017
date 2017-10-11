@@ -1,0 +1,75 @@
+<?php
+
+// Include confi.php
+include('connect.php');
+$json = file_get_contents('php://input');
+$obj = json_decode($json);
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+	// Get data
+   
+    $FirstName = $obj->{'FirstName'};
+	$LastName = $obj->{'LastName'};
+	$Location = $obj->{'Location'};
+	$Message = $obj->{'Message'};
+	$FromEmail = $obj->{'Email'};
+	$Emergency = $obj->{'Emergency'};
+	$SchoolId = $obj->{'SchoolId'};
+	$StudentId = $obj->{'StudentId'};
+	
+    $schId="";
+    $stuId="";
+    $emergencymail="";
+   
+    $getresult = mysqli_query($connection,"SELECT sc.SchoolId FROM school sc WHERE sc.SchoolUniqueCode='$SchoolId'");
+    $count = mysqli_num_rows($getresult);
+    $getresultstudent = mysqli_query($connection,"SELECT StudentId FROM student  WHERE UniqueId='$StudentId'");
+    $countstudent = mysqli_num_rows($getresultstudent);
+   
+
+if ($count>0 && $countstudent>0){
+     while($row = mysqli_fetch_array($getresult))
+    {
+         $schId=$row['SchoolId'];  
+    }
+    while($row = mysqli_fetch_array($getresultstudent))
+    {
+         $stuId=$row['StudentId'];   
+    }
+    
+    $getresultemer = mysqli_query($connection,"SELECT * FROM emergencymailid  WHERE SchoolId='$schId'");
+    $countemer = mysqli_num_rows($getresultstudent);
+    
+	if($countemer>0){
+        
+        while($row = mysqli_fetch_array($getresultemer))
+    {
+         $emergencymail=$row[$Emergency];   
+    }
+        
+	$sql = "INSERT INTO `emergency_trail` (`FirstName`, `LastName`, `Location`, `Message`, `FromEmail`, `ToEmail`, `Emergency`, `SchoolId`,`StudentId`) VALUES ('$FirstName', '$LastName', '$Location', '$Message','$FromEmail','$emergencymail', '$Emergency','$schId','$stuId');";
+	$qur = mysqli_query($connection,$sql);
+ 
+	if($qur){
+       $json = array("status" => 1, "msg" =>  "Done");
+	}
+      else{
+		$json = array("status" => 0, "msg" =>  "Emergency Not Found.");
+	}  
+    }else{
+		$json = array("status" => 0, "msg" =>  "Something went wrong.");
+	}
+}
+    else
+    {
+       $json = array("status" => 0, "msg" => "School or Student id not found"); 
+    }
+}else{
+	$json = array("status" => 0, "msg" => "Request method not accepted");
+}
+
+@mysqli_close($connection);
+
+/* Output header */
+	header('Content-type: application/json');
+	echo json_encode($json);

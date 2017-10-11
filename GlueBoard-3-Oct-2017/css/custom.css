@@ -1,0 +1,54 @@
+.oc-release .oc-download {
+    min-height: 210px;
+}
+
+.oc-download {
+    width: 100%;
+    float: left;
+}
+
+.oc-pricing {
+    border: solid 1px #ddd;
+}
+
+.pricing {
+    min-height: 250px;
+    margin: 20px auto;
+    max-width: 350px;
+}
+.oc-download h3 {
+    font-size: 20px;
+}
+.oc-blue {
+    background: #3498db;
+}
+
+.oc-darkyellow {
+    background: #FF8C00 !important;
+}
+
+.oc-lightyellow {
+    background: #CCCC00 !important;
+}
+
+h3 {
+    font-size: 18px !important;
+    text-align: center;
+}
+.oc-green {
+    background: #74c52c !important;
+}
+
+.oc-darkgreen {
+    background: #639E09 !important;
+}
+.oc-red {
+    background: rgba(231, 76, 60, 1) !important;
+}
+
+.price-active, .pricing:hover {
+    z-index: 9;
+    margin-top: 20px;
+    transform: scale(1.04);
+    transition: all 300ms ease 0s;
+}

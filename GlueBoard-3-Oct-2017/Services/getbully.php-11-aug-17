@@ -1,0 +1,34 @@
+<?php
+	// Include confi.php
+	include_once('connect.php');
+
+	$uniqueid = isset($_GET['uniqueid']) ? mysqli_real_escape_string($connection,$_GET['uniqueid']) :  "";
+	if(!empty($uniqueid)){
+		$qur = mysqli_query($connection,"select b.*,s.StatusName from `bully` b
+        Left JOIN status s ON s.StatusId = b.status
+        
+        where UniqueId='$uniqueid'");
+		$result =array();
+		while($r = mysqli_fetch_array($qur)){
+			extract($r);
+			$result[] = array("BullyId" => $BullyId, 
+                              "Victims" => $Victims
+			, 'IncidentDetails' => $IncidentDetails
+                              ,'Accuses'=>$Accuses
+                              ,'Location'=>$Location
+                              ,'IncidentDate'=>$IncidentDate
+			, 'PicofAccuse' => $PicofAccuse
+			, 'IncidentBehaviour' => $IncidentBehaviour
+			, 'AreYouVictim' => $AreYouVictim
+			, 'IsAnonymous' => $IsAnonymous
+			, 'status' => $status, 'statusname' => $StatusName); 
+		}
+		$json = array("status" => 1, "info" => $result);
+	}else{
+		$json = array("status" => 0, "msg" => "Bully not found.");
+	}
+	@mysqli_close($connection);
+
+	/* Output header */
+	header('Content-type: application/json');
+	echo json_encode($json);

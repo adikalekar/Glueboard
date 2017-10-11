@@ -1,0 +1,13 @@
+<?php
+include('../includes/connect.php');
+
+if (isset($_POST['message'])) {
+    $bullyId= mysqli_real_escape_string($connection,$_POST['bullyId']);
+    $sentBy=mysqli_real_escape_string($connection,$_POST['sentBy']);
+    $role =mysqli_real_escape_string($connection,$_POST['role']);
+    $message = mysqli_real_escape_string($connection,$_POST['message']);
+
+$result = mysqli_query($connection, "INSERT conversationhistory SET BullyId=$bullyId, Message='$message', SentOn=UTC_TIMESTAMP(), SentBy='$sentBy', Role='$role'")or die(mysqli_error($connection));
+}
+
+?>
